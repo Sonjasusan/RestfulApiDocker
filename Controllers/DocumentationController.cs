@@ -8,7 +8,14 @@ namespace RestfulApi.Controllers
     [ApiController]
     public class DocumentationController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+
+        //Dependency injection tapa (tehdä sama kuin yllä)
+        private readonly northwindContext db = new northwindContext(); //alustetaan tietokanta "tyhjänä"
+
+        public DocumentationController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         [Route("documentation/{avainkoodi}")]

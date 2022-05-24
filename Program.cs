@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using RestfulApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +18,11 @@ builder.Services.AddCors(options =>
     .AllowAnyMethod()
     .AllowAnyHeader());
 });
+// ------Connection string luetaan app settings.json tiedostosta--------------
+
+builder.Services.AddDbContext<northwindContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("azure")
+    ));
 
 var app = builder.Build();
 

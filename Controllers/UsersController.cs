@@ -8,7 +8,15 @@ namespace RestfulApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+        //private readonly northwindContext db = new northwindContext();
+
+        //Dependency injection tapa(tehdä sama kuin yllä)
+        private readonly northwindContext db = new northwindContext(); //alustetaan tietokanta "tyhjänä"
+
+        public UsersController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         public ActionResult GetAll()

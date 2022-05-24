@@ -10,15 +10,15 @@ namespace RestfulApi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+        //private readonly northwindContext db = new northwindContext();
 
         ////Dependency injection tapa (tehdä sama kuin yllä)
-        //private readonly northwindContext db = new northwindContext(); //alustetaan tietokanta "tyhjänä"
+        private readonly northwindContext db = new northwindContext(); //alustetaan tietokanta "tyhjänä"
 
-        //public ProductsController(northwindContext dbparam)
-        //{
-        //    db = dbparam; 
-        //}
+        public ProductsController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
 
 

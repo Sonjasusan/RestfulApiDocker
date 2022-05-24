@@ -10,7 +10,15 @@ namespace RestfulApi.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+        //private readonly northwindContext db = new northwindContext();
+        
+        //Dependency injection tapa (tehdä sama kuin yllä)
+        private readonly northwindContext db = new northwindContext(); //alustetaan tietokanta "tyhjänä"
+
+        public EmployeesController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         //Haku pääavaimella / yksi rivi (GET)
         [HttpGet]
